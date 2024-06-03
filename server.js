@@ -10,6 +10,17 @@ const multer = require('multer');
 
 const path = require('path');
 
+const mysql = require('mysql2');
+
+const pool = mysql.createPool({
+   host: '127.0.0.1',
+   user: 'root',
+   password: '&BMDHNAq7rd&3t#Jqgfq',
+   database: 'hotfixhandyman'
+
+}).promise()
+
+
 // ===============================================================================
 database.loadDatabase();
 
@@ -33,7 +44,7 @@ const upload = multer({
             return callback(new Error('Please upload a Picture(PNG or JPEG)'))
         }
         else{
-        callback(undefined, true);
+        callback(null, true);
          }
     }
 
@@ -43,16 +54,22 @@ const upload = multer({
 
 
 app.post('/QuoteAPI',upload.single('photos'), (request, response) => {
-   var data = {RefNum: null,
+   console.log(request.body);
+   var data = {
                FirstName: request.body.FirstName,
                LastName: request.body.LastName,
                Address: request.body.Address,
                Email: request.body.Email,
-               PhoneNumber: request.body.PhoneNumber,
+               PhoneNumber: request.body.phonenumber,
                JobDescription: request.body.jobdescription,
-               Images: [request.file.originalname,request.file.originalname,request.file.originalname,request.file.originalname,request.file.originalname]
+               Images: request.file.originalname
             };
+   console.log(request.body);
+   console.log(data);
+   insertinfo(data.FirstName, data.LastName, data.Address, 
+               data.Email, data.PhoneNumber, data.JobDescription, data.Images);
    database.insert(data);
+   console.log(request.body);
    console.log("after data insert");
    console.log("after doc");
    response.json({
@@ -60,3 +77,13 @@ app.post('/QuoteAPI',upload.single('photos'), (request, response) => {
       text: request.body
    });
 });
+
+
+async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobdescription, Images){
+   const result = await pool.query(`
+      INSERT INTO JobRequests (id, FirstName, LastName, Address, Email, PhoneNumber, jobdescription, 
+                                 Images, Created)
+      VALUES (null,?,?,?,?,?,?,?, CURRENT_TIMESTAMP())
+      `, [FirstName, LastName, Address, Email, PhoneNumber, jobdescription, Images])
+   return result
+}
