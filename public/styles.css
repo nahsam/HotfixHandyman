@@ -1,0 +1,61 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf8d8;
+}
+
+header {
+    background-color: #fdf8d8;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    text-size-ajdust: extralarge;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+}
+
+nav ul li {
+    padding: 1em;
+    cursor: pointer;
+    color: white;
+}
+
+nav ul li:hover, .tab-link.current {
+    background-color: lightslategrey;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+.tab-content {
+    display: none;
+    padding: 2em;
+    background-color: #e3d5af;
+    margin: 2em auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content.current {
+    display: block;
+}

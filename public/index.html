@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HotFix Handyman</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="Designer (2).jpeg" alt="Logo" style="width:250px;height:250px;">
+        <nav>
+            <ul class="tabs">
+                <li class="tab-link current" data-tab="tab-1">Home</li>
+                <li class="tab-link" data-tab="tab-2">Pricing</li>
+                <li class="tab-link" data-tab="tab-3">Projects</li>
+                <li class="tab-link" data-tab="tab-4">Request a Quote</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="tab-1" class="tab-content current" align="middle">
+        <h2>Your Go-To Solution for ALL your Handyman Needs.</h2>
+        <table>
+            <tr>
+                <td>
+                    <p style="width: 400px;"> At HotFix Handyman, we understand that your home is your most valuable asset. That's why we're dedicated to providing top-notch handyman services that ensure your home remains in excellent condition. Whether you need a quick fix or a major renovation, our team of skilled professionals is here to help. We offer reliable, efficient, and affordable solutions tailored to meet your specific needs. With our fast response times and commitment to quality, you can rest easy knowing that your home is in good hands. Choose HotFix Handyman for peace of mind and exceptional service—every time.</p>
+                </td>
+                <td>
+                    <img src="FC9A3076.jpg" align="right" alt="PicofME" style="width:400px;height:400px;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="tab-2" class="tab-content">
+        <td align="middle">
+            <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%" >
+                <iframe width="100%" height="100%"
+                src="Pricing.htm"
+                frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
+                </iframe>
+            </div>
+        </td>  
+    </div>
+    <div id="tab-3" class="tab-content">
+        <h2>Projects</h2>
+        <p>Gallery and descriptions of past projects.</p>
+    </div>
+    <div id="tab-4" class="tab-content">
+        <h2>Submit a Job Request</h2>
+            <form id="job-request-form" action="/QuoteAPI" method="post" enctype="multipart/form-data">
+                <label>First Name</label>
+                    <input type="text" id="FirstName" name="FirstName" required><br>
+                <label>Last Name</label>
+                    <input type="text" id="LastName" name="LastName" required><br>  
+                <label>Address</label>
+                    <input type="text" id="Address" name="Address" required><br>
+                <label>Email</label>
+                    <input type="text" id="Email" name="Email" required><br>
+                <label>Phone Number</label>
+                    <input type="text" id="phonenumber" name="phonenumber" required><br>
+                <label for="jobdescription">Request Description:</label>
+                    <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" required></textarea>
+                <label for="photos" >Upload Images:</label>
+                    <input type="file" name="photos"><br>
+
+                <button type = "submit" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;"> Submit</button>
+                 <button type = "button" style="width: 100px; height: 50px; margin: 0 auto;" onclick="ClearForm()"> Clear</button>
+            </form>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
