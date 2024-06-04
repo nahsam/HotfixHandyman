@@ -19,21 +19,23 @@
         </nav>
     </header>
     <div id="tab-1" class="tab-content current" align="middle">
-        <h2>Your Go-To Solution for ALL your Handyman Needs.</h2>
+        <h2>Go-To Solution for ALL your Handyman Needs.</h2>
         <table>
             <tr>
                 <td>
-                    <p style="width: 400px;"> At HotFix Handyman, we understand that your home is your most valuable asset. That's why we're dedicated to providing top-notch handyman services that ensure your home remains in excellent condition. Whether you need a quick fix or a major renovation, our team of skilled professionals is here to help. We offer reliable, efficient, and affordable solutions tailored to meet your specific needs. With our fast response times and commitment to quality, you can rest easy knowing that your home is in good hands. Choose HotFix Handyman for peace of mind and exceptional service—every time.</p>
+                    <p style="width: 700px;"> At HotFix Handyman, we understand that your home is your most valuable asset. That's why we're dedicated to providing top-notch handyman services that ensure your home remains in excellent condition. Whether you need a quick fix or a major renovation, our team of skilled professionals is here to help. We offer reliable, efficient, and affordable solutions tailored to meet your specific needs. With our fast response times and commitment to quality, you can rest easy knowing that your home is in good hands. Choose HotFix Handyman for peace of mind and exceptional service - every time.</p>
                 </td>
                 <td>
                     <img src="FC9A3076.jpg" align="right" alt="PicofME" style="width:400px;height:400px;">
                 </td>
             </tr>
         </table>
+        <h3>About Me</h3>
+            <p style="width: 1000px;">My name is Nathan and I have lived in North Texas since I was 3 years old. Growing up in this community as it has built up over the past 20+ years has been amazing. I studied Computer Engineering at University of Texas at Dallas and have a passion of working with my hands. I wanted to have an impact on my community and decided helping others with handyman work is a great option.   </p>
     </div>
-    <div id="tab-2" class="tab-content">
-        <td align="middle">
-            <div style="padding-bottom:56.25%; position:relative; display:block; width: 100%" >
+    <div id="tab-2" class="tab-content" align="middle">
+        <td >
+            <div style="padding-bottom:56.25%; position:relative; display:block; width: 40%" >
                 <iframe width="100%" height="100%"
                 src="Pricing.htm"
                 frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
@@ -45,23 +47,23 @@
         <h2>Projects</h2>
         <p>Gallery and descriptions of past projects.</p>
     </div>
-    <div id="tab-4" class="tab-content">
+    <div id="tab-4" class="tab-content" align="middle">
         <h2>Submit a Job Request</h2>
-            <form id="job-request-form" action="/QuoteAPI" method="post" enctype="multipart/form-data">
+            <form id="job-request-form" action="/QuoteAPI" method="post" align="left" style="width: 1000px" enctype="multipart/form-data">
                 <label>First Name</label>
-                    <input type="text" id="FirstName" name="FirstName" required><br>
+                    <input type="text" id="FirstName" name="FirstName" placeholder=" ex. John" required><br>
                 <label>Last Name</label>
-                    <input type="text" id="LastName" name="LastName" required><br>  
+                    <input type="text" id="LastName" name="LastName" placeholder="ex. Doe" required><br>  
                 <label>Address</label>
-                    <input type="text" id="Address" name="Address" required><br>
+                    <input type="text" id="Address" name="Address" placeholder="ex. 123 MainStreet" required><br>
                 <label>Email</label>
-                    <input type="text" id="Email" name="Email" required><br>
+                    <input type="email" id="Email" name="Email" placeholder="ex. email@email.com" required><br>
                 <label>Phone Number</label>
-                    <input type="text" id="phonenumber" name="phonenumber" required><br>
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phonenumber" name="phonenumber" placeholder="ex. 123-456-7890" required><br>
                 <label for="jobdescription">Request Description:</label>
-                    <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" required></textarea>
-                <label for="photos" >Upload Images:</label>
-                    <input type="file" name="photos"><br>
+                    <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" placeholder="Be as descriptive as you can! The more info provided, the faster a quote is made." required></textarea>
+                <label for="photos" >Upload Images: (Max 10)</label>
+                    <input type="file" name="photos" multiple><br>
 
                 <button type = "submit" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;"> Submit</button>
                  <button type = "button" style="width: 100px; height: 50px; margin: 0 auto;" onclick="ClearForm()"> Clear</button>
