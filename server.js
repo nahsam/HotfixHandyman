@@ -23,7 +23,7 @@ const pool = mysql.createPool({
 
 }).promise()
 
-const rateLimit = require('express-rate-limit');
+//const rateLimit = require('express-rate-limit');
 const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-enterprise');
 
 
@@ -36,11 +36,11 @@ var server = app.listen(5000, function () {
 })
 // ===============================================================================
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10, // limit each IP to 100 requests per windowMs
-    message: 'Too many requests, please try again later.'
-});
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000, // 15 minutes
+//     max: 10, // limit each IP to 100 requests per windowMs
+//     message: 'Too many requests, please try again later.'
+// });
 
 var imageVault = [];
 let date = Date.now();
