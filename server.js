@@ -48,7 +48,7 @@ let date = Date.now();
 app.use(cors())
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use(limiter);
+//app.use(limiter);
 
 const storage = multer.diskStorage({
    
