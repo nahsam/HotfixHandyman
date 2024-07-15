@@ -31,8 +31,8 @@ const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-ente
 // ===============================================================================
 database.loadDatabase();
 
-var server = app.listen(5000, function () {
-   console.log("Express App running at http://127.0.0.1:5000/");
+var server = app.listen(5000,'0.0.0.0', function () {
+   console.log("Express App running at http://0.0.0.0:5000/");
 })
 // ===============================================================================
 
