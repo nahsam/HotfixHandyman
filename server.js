@@ -112,7 +112,7 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
 async function createAssessment({
   // TODO: Replace the token and reCAPTCHA action variables before running the sample.
   projectID = "hotfixhandyman-1719508749922",
-  recaptchaKey = "6LfYgRIqAAAAAOrfBerFkNyyxzntGwMzEep8MWId",
+  recaptchaKey = "6LdH7gIqAAAAAD4upDqckZdMJyTFBRSjQpldySf-",
   token = "action-token",
   recaptchaAction = "action-name",
   }) {

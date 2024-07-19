@@ -56,7 +56,6 @@ function ClearForm() {
 // }
 
 function addDashes(f){
-    alert(f.value)
     if(f.value.length == 10) f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6)+"-"+f.value.slice(6,15);
 }
 
