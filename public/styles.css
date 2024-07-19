@@ -41,10 +41,32 @@ nav ul li:hover, .tab-link.current {
 form {
     display: flex;
     flex-direction: column;
+    max-width: 700px;
 }
 
 section {
     margin-bottom: 2em;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.left{
+    flex: 50%;
+}
+.right{
+    flex:33%;
+}
+.h1{ 
+    text-align: center;
+}
+.h5{
+
+}
+.p1{
+    max-width: 700px;
+    text-align: left;
 }
 
 .tab-content {
@@ -52,10 +74,23 @@ section {
     padding: 2em;
     background-color: #e3d5af;
     margin: 2em auto;
-    width: 80%;
+    min-width: 100px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .tab-content.current {
     display: block;
+}
+
+.priceframe {
+    padding-bottom:500px; 
+    position:relative; 
+    display:block; 
+    min-width: 400px;
+}
+
+@media (min-width: 300px) {
+  .row{   
+    flex-direction: row;
+  }
 }

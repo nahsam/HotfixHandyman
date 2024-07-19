@@ -17,39 +17,36 @@
             </ul>
         </nav>
     </header>
-    <div id="tab-1" class="tab-content current" align="middle">
-        
-        <table style= "postition: reletive">
-            <tr>
-                <td>
-                    <h2 style= "postition: reletive">Go-To Solution for ALL your Handyman Needs</h2>
-                        <p style="width: 700px; position: relative;"> At HotFix Handyman, we understand that your home is your most valuable asset. That's why we're dedicated to providing top-notch handyman services that ensure your home remains in excellent condition. Whether you need a quick fix or a major renovation, our team of skilled professionals is here to help. We offer reliable, efficient, and affordable solutions tailored to meet your specific needs. With our fast response times and commitment to quality, you can rest easy knowing that your home is in good hands. Choose HotFix Handyman for peace of mind and exceptional service - every time.
-                        </p>
-                </td>
-                <td rowspan="2">
-                    <img src="FC9A3076.jpg" align="right" alt="PicofME" style="width:300px;height:400px;">
-                </td>
-                <tr>
-                    <td>
-                        <h3 align="left" style="position: relative;">About Me</h3>
-                            <p style="width: 700px; position: relative;" align="left" >My name is Nathan and I  have lived in North Texas since I was 3 years old. Growing up in this community as it has built up over the past 25+ years has been amazing. I studied Computer Engineering at University of Texas at Dallas and have a passion of working with my hands. I wanted to have an impact on my community and decided helping others with handyman work is a great option.
-                            </p>
-                         <h4 align="left" style= "position:relative;">Service Area: Collin County</h4>
-                     </td>
-                </tr>
-            </tr>
-        </table>
-        
-    </div>
-    <div id="tab-2" class="tab-content" align="middle">
-        <td >
-            <div style="padding-bottom:56.25%; position:relative; display:block; width: 40%" >
-                <iframe width="100%" height="100%"
-                src="Pricing.htm"
-                frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
-                </iframe>
+    <div id="tab-1" class="tab-content current">
+        <div class="row">
+            <div class="left" align="middle"> 
+                <div>
+                    <h1 class="h1" align="right">Go-To Solution for ALL your Handyman Needs</h1>
+                    <p class="p1"> At HotFix Handyman, we understand that your home is your most valuable asset. That's why we're dedicated to providing top-notch handyman services that ensure your home remains in excellent condition. Whether you need a quick fix or a major renovation, our team of skilled professionals is here to help. We offer reliable, efficient, and affordable solutions tailored to meet your specific needs. With our fast response times and commitment to quality, you can rest easy knowing that your home is in good hands. Choose HotFix Handyman for peace of mind and exceptional service - every time.
+                    </p>
+                </div> 
+                <div>
+                <h1 class="h1">About Me</h1>
+                    <p class="p1">My name is Nathan and I  have lived in North Texas since I was 3 years old. Growing up in this community as it has built up over the past 25+ years has been amazing. I studied Computer Engineering at University of Texas at Dallas and have a passion of working with my hands. I wanted to have an impact on my community and decided helping others with handyman work is a great option.
+                    </p>
+                </div>
+                <div><h4 class="h1">Service Area: Collin County</h4></div>
             </div>
-        </td>  
+            <div class="right">
+                <img src="FC9A3076.jpg" style="width:300px;height:400px;" align="middle"  alt="PicofME" >
+            </div>
+        </div> 
+    </div>  
+    <div id="tab-2" class="tab-content" align="middle">
+        <div>
+            <h1 align="left" >Prices listed are estimates</h1>
+        </div>
+        <div  class="priceframe" >
+            <iframe width="100%" height="100%"
+            src="Pricing.htm"
+            frameborder="0" allowfullscreen="" style="position:absolute; top:0; left: 0">
+            </iframe>
+        </div>
     </div>
     <div id="tab-3" class="tab-content">
         <h2>Projects</h2>
@@ -57,7 +54,7 @@
     </div>
     <div id="tab-4" class="tab-content" align="middle">
         <h2>Submit a Job Request</h2>
-            <form id="job-request-form" action="/QuoteAPI" method="post" align="left" style="width: 1000px" enctype="multipart/form-data">
+            <form id="job-request-form" action="/QuoteAPI" method="post" align="left" enctype="multipart/form-data">
                 <label>First Name</label>
                     <input type="text" id="FirstName" name="FirstName" placeholder=" ex. John" required><br>
                 <label>Last Name</label>
@@ -67,7 +64,7 @@
                 <label>Email</label>
                     <input type="email" id="Email" name="Email" placeholder="ex. email@email.com" required><br>
                 <label>Phone Number</label>
-                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phonenumber" name="phonenumber" placeholder="ex. 123-456-7890" required><br>
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phonenumber" name="phonenumber" placeholder="ex. 123-456-7890" onblur="addDashes(this)" required><br>
                 <label for="jobdescription">Request Description:</label>
                     <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" placeholder="Be as descriptive as you can! The more info provided, the faster a quote is made." required></textarea>
                 <label for="photos" >Upload Images: (Max 10)</label>
@@ -79,6 +76,6 @@
     </div>
 
     <script src="scripts.js"></script>
-    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfYgRIqAAAAAOrfBerFkNyyxzntGwMzEep8MWId" async defer></script>
 </body>
 </html>

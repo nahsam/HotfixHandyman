@@ -31,7 +31,7 @@ const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-ente
 // ===============================================================================
 database.loadDatabase();
 
-var server = app.listen(5000,'0.0.0.0', function () {
+var server = app.listen(5000, '0.0.0.0', function () {
    console.log("Express App running at http://0.0.0.0:5000/");
 })
 // ===============================================================================
@@ -76,7 +76,6 @@ const upload = multer({
 
 
 
-
 app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, response) => {
    var data = {
                FirstName: request.body.FirstName.replace(/[^a-zA-Z0-9-'\s]/g, ''),
@@ -113,7 +112,7 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
 async function createAssessment({
   // TODO: Replace the token and reCAPTCHA action variables before running the sample.
   projectID = "hotfixhandyman-1719508749922",
-  recaptchaKey = "6LdH7gIqAAAAAD4upDqckZdMJyTFBRSjQpldySf-",
+  recaptchaKey = "6LfYgRIqAAAAAOrfBerFkNyyxzntGwMzEep8MWId",
   token = "action-token",
   recaptchaAction = "action-name",
   }) {
