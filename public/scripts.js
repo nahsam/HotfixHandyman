@@ -24,21 +24,18 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const jobRequestForm = document.getElementById('job-request-form');
     jobRequestForm.addEventListener('submit', function(event) {
-        if (grecaptcha.getResponse().length() == 0) alert("Please check reCAPTHCA");
-        else {
-            event.preventDefault();
-            const formData = new FormData(jobRequestForm);
-            fetch('/QuoteAPI', {
-                method: 'POST',
-                mode: 'cors',
-                body: formData
-            })
-            .then(response => response.json)
-            .then(data => alert('Job request submitted successfully!'))
-            .then(ClearForm())
-            .catch(error => console.error('Error:', error)
-            );
-        }
+        event.preventDefault();
+        const formData = new FormData(jobRequestForm);
+        fetch('/QuoteAPI', {
+            method: 'POST',
+            mode: 'cors',
+            body: formData
+        })
+        .then(response => response.json)
+        .then(data => alert('Job request submitted successfully!'))
+        .then(ClearForm())
+        .catch(error => console.error('Error:', error)
+        );
     });
 });
 
@@ -48,22 +45,23 @@ function ClearForm() {
     console.log("Clear form done");
 }
 
-// function onClick(e) {
-//     e.preventDefault();
-//         grecaptcha.enterprise.ready(async () => {
-//           const token = await grecaptcha.enterprise.execute('6LfYgRIqAAAAAOrfBerFkNyyxzntGwMzEep8MWId', {action: 'submit'});
-//         });
-// }
+  // function onClick(e) {
+  //   e.preventDefault();
+  //   grecaptcha.enterprise.ready(async () => {
+  //     const token = await grecaptcha.enterprise.execute('6LeitxIqAAAAADcWF-ubu5_TrIEGu0ya1yfinEzQ', {action: 'LOGIN'});
+  //   });
+  // }
+
 
 function addDashes(f){
     if(f.value.length == 10) f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6)+"-"+f.value.slice(6,15);
 }
 
-// const form = docuent.querySelector('job-request-form');
+const form = docuent.querySelector('job-request-form');
 
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const captchaResponse = grecaptcha.response();
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const captchaResponse = grecaptcha.response();
 
-//     if(!captchaResponse.length > 0) alert("Please check reCAPTHCA");
-// });
+    if(!captchaResponse.length > 0) alert("Please check reCAPTHCA");
+});
