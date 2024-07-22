@@ -45,23 +45,14 @@ function ClearForm() {
     console.log("Clear form done");
 }
 
-  // function onClick(e) {
-  //   e.preventDefault();
-  //   grecaptcha.enterprise.ready(async () => {
-  //     const token = await grecaptcha.enterprise.execute('6LeitxIqAAAAADcWF-ubu5_TrIEGu0ya1yfinEzQ', {action: 'LOGIN'});
-  //   });
-  // }
 
 
 function addDashes(f){
     if(f.value.length == 10) f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6)+"-"+f.value.slice(6,15);
 }
 
-const form = docuent.querySelector('job-request-form');
+const form = document.querySelector('job-request-form');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const captchaResponse = grecaptcha.response();
-
-    if(!captchaResponse.length > 0) alert("Please check reCAPTHCA");
-});
+function enableBtn(){
+   document.getElementById("submitbutton").disabled = false;
+ }
