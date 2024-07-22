@@ -161,14 +161,14 @@ async function createAssessment({
 
 
 
-async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobdescription, 
+async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobdescription,
                            Image0, Image1, Image2,Image3, Image4, Image5, Image6, Image7, 
                            Image8, Image9){
    const result = await pool.query(`
-      INSERT INTO JobRequests (id, FirstName, LastName, Address, Email, PhoneNumber, jobdescription,
+      INSERT INTO JobRequests (id, FirstName, LastName, Address, Email, PhoneNumber, jobdescription, jobStatus,
                                Image0, Image1, Image2, Image3, Image4, Image5, Image6, Image7, 
                                Image8, Image9, Created)
-      VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?, CURRENT_TIMESTAMP())
+      VALUES (null,?,?,?,?,?,?,?,'New',?,?,?,?.?,?,?,?,?,?, CURRENT_TIMESTAMP())
       `, [FirstName, LastName, Address, Email, PhoneNumber, jobdescription, Image0, Image1, Image2,
             Image3, Image4, Image5, Image6, Image7, Image8, Image9]) 
    return result
