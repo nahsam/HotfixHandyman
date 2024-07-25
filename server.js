@@ -197,8 +197,10 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
          text: jobdescription,
          attachments: [
          {
-            filename: imageVault,
-            content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/'+imageVault)
+            imageVault.forEach((element)=>
+               filename: element.tostring(),
+               content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/'+ element.tostring())
+            )
          }]
       };
    mailer.sendMail(mailOptions, function(error, info){
