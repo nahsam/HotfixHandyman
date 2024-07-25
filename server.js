@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
    const app = express();
 
 const bodyParser = require('body-parser');
@@ -10,6 +10,17 @@ const multer = require('multer');
 
 
 const path = require('path');
+
+const nodemailer = require('nodemailer');
+   var mailer = nodemailer.createTransport({
+      //service: 'gmail',
+      host: smtp.gmail.com,
+      port: 587,
+      auth: {
+            user: 'hotfixhandyman@gmail.com',
+            pass: process.env.EMAILPASS
+      }
+   });
 
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
@@ -92,6 +103,8 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
                data.Images[4],data.Images[5],data.Images[6],data.Images[7],
                data.Images[9],data.Images[9]);
    database.insert(data);
+   sendemailnotification(data.FirstName, data.LastName, data.Address, data.Email, 
+               data.jobdescription, imageVault);
    response.json({
       status: 'success',
       text: request.body
@@ -158,9 +171,6 @@ async function createAssessment({
   }
 }
 
-
-
-
 async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobdescription,
                            Image0, Image1, Image2,Image3, Image4, Image5, Image6, Image7, 
                            Image8, Image9){
@@ -172,4 +182,23 @@ async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobd
       `, [FirstName, LastName, Address, Email, PhoneNumber, jobdescription, Image0, Image1, Image2,
             Image3, Image4, Image5, Image6, Image7, Image8, Image9]) 
    return result
+}
+
+async function sendemailnotification(FirstName, LastName, Address, Email, jobdescription,
+                                       imageVault){
+   var date = new Date();
+   var mailOptions = {
+         from: 'hotfixhandyman@gmail.com',
+         to: 'hotfixhandyman@gmail.com',
+         subject: $(FirstName) + ' ' + $(LastName) + $Email + date, 
+         text: $(jobdescription),
+         attachments: [
+         {
+            fileName: imageVault,
+            content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/'+imageVault)
+         }]
+      };
+   mailer.sendMail(mailOptions, fuction(error, info){
+      if(error) console.log(error);
+      });
 }
