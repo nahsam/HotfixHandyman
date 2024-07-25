@@ -1,6 +1,8 @@
  const express = require('express');
    const app = express();
 
+const fs = require('fs');
+
 const bodyParser = require('body-parser');
 const DataStore = require('nedb');
    const database = new DataStore('database.db');
@@ -13,12 +15,13 @@ const path = require('path');
 
 const nodemailer = require('nodemailer');
    var mailer = nodemailer.createTransport({
-      //service: 'gmail',
-      host: smtp.gmail.com,
-      port: 587,
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
             user: 'hotfixhandyman@gmail.com',
-            pass: process.env.EMAILPASS
+            pass: 'vgqm hbjf tcnc saua' 
       }
    });
 
@@ -190,15 +193,16 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
    var mailOptions = {
          from: 'hotfixhandyman@gmail.com',
          to: 'hotfixhandyman@gmail.com',
-         subject: $(FirstName) + ' ' + $(LastName) + $Email + date, 
-         text: $(jobdescription),
+         subject: FirstName + ' ' + LastName + Email + date, 
+         text: jobdescription,
          attachments: [
          {
-            fileName: imageVault,
+            filename: imageVault,
             content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/'+imageVault)
          }]
       };
-   mailer.sendMail(mailOptions, fuction(error, info){
+   mailer.sendMail(mailOptions, function(error, info){
       if(error) console.log(error);
+      else;
       });
 }
