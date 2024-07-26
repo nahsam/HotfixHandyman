@@ -95,6 +95,7 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
    database.insert(data);
    sendemailnotification(data.FirstName, data.LastName, data.Address, data.Email, 
                data.JobDescription, imageVault);
+   imageVault = [];
    response.json({
       status: 'success',
       text: request.body
@@ -179,12 +180,11 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
    var date = new Date();
    var attachmentVault = [];
    attachmentVault = imageVault.map(AttachmentMap);
-   console.log(attachmentVault);
    var mailOptions = {
          from: 'hotfixhandyman@gmail.com',
          to: 'hotfixhandyman@gmail.com',
          subject: FirstName + ' ' + LastName + Email + date, 
-         ext: jobdescription,
+         text: jobdescription,
          attachments: attachmentVault
       };
    mailer.sendMail(mailOptions, function(error, info){
@@ -193,6 +193,6 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
       });
 }
 
-async function AttachmentMap(value){
+ function AttachmentMap(value){
    return {filename: value , content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/' + value) };
 };
