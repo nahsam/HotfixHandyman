@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+   dotenv.config();
  const express = require('express');
    const app = express();
 
@@ -21,13 +23,11 @@ const nodemailer = require('nodemailer');
       secure: true,
       auth: {
             user: 'hotfixhandyman@gmail.com',
-            pass: 'vgqm hbjf tcnc saua' 
+            pass: process.env.EMAILPASS
       }
    });
 
 const mysql = require('mysql2');
-const dotenv = require('dotenv');
-   dotenv.config(); 
 
 const pool = mysql.createPool({
    host: process.env.MYSQL_HOST,
@@ -37,10 +37,7 @@ const pool = mysql.createPool({
 
 }).promise()
 
-//const rateLimit = require('express-rate-limit');
 const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-enterprise');
-
-
 
 // ===============================================================================
 database.loadDatabase();
@@ -49,12 +46,6 @@ var server = app.listen(5000, '0.0.0.0', function () {
    console.log("Express App running at http://0.0.0.0:5000/");
 })
 // ===============================================================================
-
-// const limiter = rateLimit({
-//     windowMs: 15 * 60 * 1000, // 15 minutes
-//     max: 10, // limit each IP to 100 requests per windowMs
-//     message: 'Too many requests, please try again later.'
-// });
 
 var imageVault = [];
 let date = Date.now();
@@ -84,11 +75,7 @@ const upload = multer({
            callback(null, true);
             }
       }
-
-
 })
-
-
 
 app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, response) => {
    var data = {
@@ -190,21 +177,23 @@ async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobd
 async function sendemailnotification(FirstName, LastName, Address, Email, jobdescription,
                                        imageVault){
    var date = new Date();
+   var attachmentVault = [];
+   attachmentVault = imageVault.map(AttachmentMap);
+   console.log(attachmentVault);
    var mailOptions = {
          from: 'hotfixhandyman@gmail.com',
          to: 'hotfixhandyman@gmail.com',
          subject: FirstName + ' ' + LastName + Email + date, 
          text: jobdescription,
-         attachments: [
-         {
-            imageVault.forEach((element)=>
-               filename: element.tostring(),
-               content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/'+ element.tostring())
-            )
-         }]
+         attachments: attachmentVault
       };
    mailer.sendMail(mailOptions, function(error, info){
       if(error) console.log(error);
       else;
       });
 }
+
+async function AttachmentMap(value){
+return '{filename:'+ value.tostring() + ', content: ' 
+         + fs.createReadStream('/home/nathan/HotfixHandyman/uploads/') + value.tostring() + '},';
+};
