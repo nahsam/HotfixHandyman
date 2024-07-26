@@ -94,7 +94,7 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
                data.Images[9],data.Images[9]);
    database.insert(data);
    sendemailnotification(data.FirstName, data.LastName, data.Address, data.Email, 
-               data.jobdescription, imageVault);
+               data.JobDescription, imageVault);
    response.json({
       status: 'success',
       text: request.body
@@ -184,7 +184,7 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
          from: 'hotfixhandyman@gmail.com',
          to: 'hotfixhandyman@gmail.com',
          subject: FirstName + ' ' + LastName + Email + date, 
-         text: jobdescription,
+         ext: jobdescription,
          attachments: attachmentVault
       };
    mailer.sendMail(mailOptions, function(error, info){
@@ -194,6 +194,5 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
 }
 
 async function AttachmentMap(value){
-return '{filename:'+ value.tostring() + ', content: ' 
-         + fs.createReadStream('/home/nathan/HotfixHandyman/uploads/') + value.tostring() + '},';
+return '{filename:'+ value + ', path:/home/nathan/HotfixHandyman/uploads/' + value + '},';
 };
