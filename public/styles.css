@@ -33,6 +33,10 @@ nav ul li {
     cursor: pointer;
     color: white;
 }
+.tab-link {
+    cursor: pointer;
+}
+
 
 nav ul li:hover, .tab-link.current {
     background-color: lightslategrey;
