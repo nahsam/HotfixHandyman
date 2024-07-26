@@ -194,5 +194,5 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
 }
 
 async function AttachmentMap(value){
-return '{filename:'+ value + ', path:/home/nathan/HotfixHandyman/uploads/' + value + '},';
+   return {filename: value , content: fs.createReadStream('/home/nathan/HotfixHandyman/uploads/' + value) };
 };
