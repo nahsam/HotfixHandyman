@@ -1,20 +1,24 @@
+// Initializations
+// ===============================================================================
 const dotenv = require('dotenv');
    dotenv.config();
+// ===============================================================================
  const express = require('express');
    const app = express();
-
+// ===============================================================================
 const fs = require('fs');
-
+// ===============================================================================
 const bodyParser = require('body-parser');
+// ===============================================================================
 const DataStore = require('nedb');
    const database = new DataStore('database.db');
-
+// ===============================================================================
 const cors = require('cors')
+// ===============================================================================
 const multer = require('multer');
-
-
+// ===============================================================================
 const path = require('path');
-
+// ===============================================================================
 const nodemailer = require('nodemailer');
    var mailer = nodemailer.createTransport({
       service: 'gmail',
@@ -26,19 +30,19 @@ const nodemailer = require('nodemailer');
             pass: process.env.EMAILPASS
       }
    });
-
+// ===============================================================================
 const mysql = require('mysql2');
 
-const pool = mysql.createPool({
-   host: process.env.MYSQL_HOST,
-   user: process.env.MYSQL_USER,
-   password: process.env.MYSQL_PASSWORD,
-   database: process.env.MYSQL_DB
-
-}).promise()
-
+   const pool = mysql.createPool({
+      host: process.env.MYSQL_HOST,
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DB
+   }).promise()
+// ===============================================================================   
 const {RecaptchaEnterpriseServiceClient} = require('@google-cloud/recaptcha-enterprise');
-
+// ===============================================================================
+//  Start Up
 // ===============================================================================
 database.loadDatabase();
 
@@ -46,14 +50,14 @@ var server = app.listen(5000, '0.0.0.0', function () {
    console.log("Express App running at http://0.0.0.0:5000/");
 })
 // ===============================================================================
-
+// Body
+// ===============================================================================
 var imageVault = [];
 let date = Date.now();
 
 app.use(cors())
 app.use(express.static('public'));
 app.use(bodyParser.json());
-//app.use(limiter);
 
 const storage = multer.diskStorage({
    
@@ -69,8 +73,7 @@ const upload = multer({
       storage: storage,
       fileFilter: (req, file, callback) => {
            if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
-               return callback(new Error('Please upload a Picture(PNG or JPEG)'))
-           }
+               return callback(new Error('Please upload a Picture(PNG or JPEG)'))}
            else{
            callback(null, true);
             }
@@ -101,9 +104,9 @@ app.post('/QuoteAPI',upload.fields([{name:'photos', maxCount: 10},]), (request, 
       text: request.body
    });
 });
-
-
-
+// ===============================================================================
+// Functions
+// ===============================================================================
 
 /**
   * Create an assessment to analyze the risk of a UI action.
@@ -180,6 +183,11 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
    var date = new Date();
    var attachmentVault = [];
    attachmentVault = imageVault.map(AttachmentMap);
+   if (attachmentVault.length >= 4){
+      const lengthdiff = attachmentVault.length  - 3;
+      attachmentVault.length = 3;
+      jobdescription = jobdescription + '\n \n' + lengthdiff + ' more images saved on server';
+   }
    var mailOptions = {
          from: 'hotfixhandyman@gmail.com',
          to: 'hotfixhandyman@gmail.com',
