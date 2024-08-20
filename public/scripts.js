@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+document.getElementById("loader").style.display = "none";
 document.addEventListener("DOMContentLoaded", function() {
     const jobRequestForm = document.getElementById('job-request-form');
     jobRequestForm.addEventListener('submit', function(event) {
@@ -32,8 +33,9 @@ document.addEventListener("DOMContentLoaded", function() {
             body: formData
         })
         .then(response => response.json)
-        .then(data => alert('Job request submitted successfully!'))
+        .then(removeSpinner())
         .then(ClearForm())
+        .then(data => alert('Job request submitted successfully!'))
         .catch(error => console.error('Error:', error)
         );
     });
@@ -55,4 +57,11 @@ const form = document.querySelector('job-request-form');
 
 function enableBtn(){
    document.getElementById("submitbutton").disabled = false;
- }
+}
+function showSpinner() {
+  document.getElementById("loader").style.display = "initial";
+}
+
+function removeSpinner() {
+  document.getElementById("loader").style.display = "none";
+}

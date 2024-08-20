@@ -69,11 +69,12 @@
                     <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" placeholder="Be as descriptive as you can! The more info provided, the faster a quote is made." required></textarea>
                 <label for="photos" >Upload Images: (Max 10)</label>
                     <input type="file" name="photos" multiple><br>
-                <button type = "submit" id="submitbutton" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;" disabled="disabled" > Submit</button>
+                <button type = "submit" id="submitbutton" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;" disabled="diasabled" onclick="showSpinner()" > Submit</button>
                  <button type = "button" style="width: 100px; height: 50px; margin: 0 auto;" onclick="ClearForm()"> Clear</button>
                  <div class="g-recaptcha" align="middle" data-sitekey="6LdH7gIqAAAAAD4upDqckZdMJyTFBRSjQpldySf-" data-callback="enableBtn"></div>
             </form>
     </div>
+    <div id="loader"></div>
     <div>
         <img src="Insured.png" data-tab="tab-1" alt="insurecheck" style=" padding-left: 100px; width:100px;height:100px; background-color: #fdf8d8;">
         <img align="right" src="payments.png" data-tab="tab-1" alt="paymentsimg" style="padding-right: 100px; width:200px;height:50px; background-color: #fdf8d8;">
