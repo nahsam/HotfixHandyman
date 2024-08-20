@@ -54,7 +54,7 @@
     </div>
     <div id="tab-4" class="tab-content" align="middle">
         <h2>Submit a Job Request</h2>
-            <form id="job-request-form" action="/QuoteAPI" method="post" align="left" enctype="multipart/form-data">
+            <form id="job-request-form" action="/QuoteAPI" onsubmit="showSpinner()" method="post" align="left" enctype="multipart/form-data">
                 <label>First Name</label>
                     <input type="text" id="FirstName" name="FirstName" placeholder=" ex. John" required><br>
                 <label>Last Name</label>
@@ -69,7 +69,7 @@
                     <textarea id="jobdescription" name="jobdescription" rows="18" cols="50" placeholder="Be as descriptive as you can! The more info provided, the faster a quote is made." required></textarea>
                 <label for="photos" >Upload Images: (Max 10)</label>
                     <input type="file" name="photos" multiple><br>
-                <button type = "submit" id="submitbutton" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;" disabled="diasabled" onclick="showSpinner()" > Submit</button>
+                <button type = "submit" id="submitbutton" disabled="disabled" value="Upload"style="width: 300px; height: 50px; margin: 0 auto;" > Submit</button>
                  <button type = "button" style="width: 100px; height: 50px; margin: 0 auto;" onclick="ClearForm()"> Clear</button>
                  <div class="g-recaptcha" align="middle" data-sitekey="6LdH7gIqAAAAAD4upDqckZdMJyTFBRSjQpldySf-" data-callback="enableBtn"></div>
             </form>

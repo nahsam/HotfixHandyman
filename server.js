@@ -181,7 +181,7 @@ async function insertinfo(FirstName, LastName, Address, Email, PhoneNumber, jobd
 async function sendemailnotification(FirstName, LastName, Address, Email, jobdescription,
                                        imageVault){
    var date = new Date();
-   var numImages = attachmentVault.length;
+   var numImages = imageVault.length;
    var attachmentVault = [];
    attachmentVault = imageVault.map(AttachmentMap);
    if (attachmentVault.length >= 4){

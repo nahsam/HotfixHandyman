@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.getElementById("loader").style.display = "none";
 document.addEventListener("DOMContentLoaded", function() {
     const jobRequestForm = document.getElementById('job-request-form');
     jobRequestForm.addEventListener('submit', function(event) {
@@ -58,10 +57,11 @@ const form = document.querySelector('job-request-form');
 function enableBtn(){
    document.getElementById("submitbutton").disabled = false;
 }
-function showSpinner() {
-  document.getElementById("loader").style.display = "initial";
-}
 
+var loader = document.getElementById("loader");
+function showSpinner() {
+  loader.style.display("block");
+}
 function removeSpinner() {
-  document.getElementById("loader").style.display = "none";
+  loader.style.display("none");
 }
