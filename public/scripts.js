@@ -60,9 +60,9 @@ function enableBtn(){
 var loader = document.getElementById("loader");
 function showSpinner() {
   loader.style.display = "block";
-  console.log("spinner started");
+  loaderbg.style.display = "block";
 }
 function removeSpinner() {
   loader.style.display = "none";
-  console.log("spinner stopped");
+  loaderbg.style.display = "none";
 }
