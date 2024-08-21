@@ -183,6 +183,7 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
    var date = new Date();
    var numImages = imageVault.length;
    var attachmentVault = [];
+   var jobdescriptionORG = jobdescription;
    attachmentVault = imageVault.map(AttachmentMap);
    if (attachmentVault.length >= 4){
       const lengthdiff = attachmentVault.length  - 3;
@@ -205,7 +206,7 @@ async function sendemailnotification(FirstName, LastName, Address, Email, jobdes
          to: Email,
          subject: "HotfixHandyman JobRequests Confirmation", 
          text: "Thank you for submitting a job request at Hotfixhandyman.com. Below is a summary of your submission. \n\nJobDescription: " + 
-         jobdescription + "/n/n Number of Images: " + numImages
+         jobdescriptionORG + "\n\n Number of Images: " + numImages
       };
    mailer.sendMail(mailOptions, function(error, info){
       if(error) console.log(error);
