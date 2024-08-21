@@ -32,9 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
             body: formData
         })
         .then(response => response.json)
-        .then(removeSpinner())
         .then(ClearForm())
-        .then(data => alert('Job request submitted successfully!'))
+        .then(data => {removeSpinner(); alert('Job request submitted successfully!');})
         .catch(error => console.error('Error:', error)
         );
     });
@@ -61,7 +60,9 @@ function enableBtn(){
 var loader = document.getElementById("loader");
 function showSpinner() {
   loader.style.display = "block";
+  console.log("spinner started");
 }
 function removeSpinner() {
   loader.style.display = "none";
+  console.log("spinner stopped");
 }
