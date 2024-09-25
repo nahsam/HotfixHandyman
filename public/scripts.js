@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json)
         .then(ClearForm())
-        .then(data => {removeSpinner(); alert('Job request submitted successfully!');})
+        .then(response => removeSpinner())
+        .then(data => {alert('Job request submitted successfully!');})
         .catch(error => console.error('Error:', error)
         );
     });
